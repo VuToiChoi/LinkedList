@@ -190,7 +190,6 @@ struct LinkedList
     void RemoveFirst()
     {
         Node* current_ = head_;
-        Node* prev_; 
 
         if (head_ == nullptr)
         {
@@ -272,16 +271,24 @@ struct LinkedList
         {
             if (current_->data_ == data)
             {
-                if (current_ == nullptr)
-                {
-                    cout << "Data " << current_->data_ << " found at slot " << i << endl;
-                    break;
-                }
-                else if (current_ != nullptr)
+                if (current_->next_ != nullptr)
                 {
                     cout << "Data " << current_->data_ << " found at slot " << i << endl;
                     i = i + 1;
                     current_ = current_->next_;
+                }
+                else if (current_->data_ == data)
+                {
+                    cout << "Data " << current_->data_ << " found at slot " << i << endl;
+                    break;
+                }
+            }
+            else if (current_->next_ == nullptr)
+            {
+                if (current_->data_ != data)
+                { 
+                    cout << "Data not found";
+                    break;
                 }
             }
             else if (current_->data_ != data)
@@ -295,11 +302,6 @@ struct LinkedList
                 {
                     break;
                 }
-            }
-            else if (current_->next_ == nullptr)
-            {
-                cout << "Data not found";
-                break;
             }
         }
     }
@@ -359,5 +361,5 @@ int main()
     linkedList.Add(0);
     linkedList.Add(9);
     linkedList.PrintList();
-    linkedList.Contains(7);
+    linkedList.Contains(5);
 }
