@@ -283,20 +283,17 @@ struct LinkedList
                     break;
                 }
             }
-            else if (current_->next_ == nullptr)
-            {
-                if (current_->data_ != data)
-                { 
-                    cout << "Data not found";
-                    break;
-                }
-            }
             else if (current_->data_ != data)
             {
                 if (current_->next_ != nullptr)
                 {
                     i = i + 1;
                     current_ = current_->next_;
+                }
+                else if (current_->next_ == nullptr)
+                {
+                    cout << "Data not found";
+                    break;
                 }
                 else
                 {
@@ -361,5 +358,5 @@ int main()
     linkedList.Add(0);
     linkedList.Add(9);
     linkedList.PrintList();
-    linkedList.Contains(5);
+    linkedList.Contains(0);
 }
